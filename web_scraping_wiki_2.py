@@ -6,9 +6,14 @@
 # https://www.youtube.com/channel/UCvVZ19DRSLIC2-RUOeWx8ug
 # Minor modifications have been made from JieJenn's version
 
+import os
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+
+
+output_path = os.path.join(os.path.expanduser("~"), "Documents", "Python_code", "web_scrape_wikipedia", "wiki_manf_companies.csv")
+
 
 # Sources
 # https://en.wikipedia.org/wiki/List_of_largest_manufacturing_companies_by_revenue
@@ -39,10 +44,7 @@ def process():
             values = [td.text.replace('\n', '').replace('\xa0', '') for td in tds]
 
         df = df.append(pd.Series(values, index=columns), ignore_index=True)
-
-        df.to_csv(r'/home/rob/Documents/Python_code/web_scrape_wikipedia' +
-                  '//wiki_manf_companies.csv',
-                  index=False)
+        df.to_csv(output_path, index=False)
 
 def main():
     fetch()
