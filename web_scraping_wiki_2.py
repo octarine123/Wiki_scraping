@@ -18,6 +18,15 @@ output_path = os.path.join(os.path.expanduser("~"), "Documents", "Python_code", 
 # Sources
 # https://en.wikipedia.org/wiki/List_of_largest_manufacturing_companies_by_revenue
 
+class WikiTableScraper:
+    def __init__(self, url, table_class):
+        self.url = url
+        self.table_class = table_class
+        self.table = None
+        self.rows = None
+        self.columns = None
+
+
 def fetch():
     global table
     global rows
